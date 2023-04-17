@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>REW AutoEQ > Zapco</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-white text-center mt-4 mb-4">REW AutoEQ to Zapco</h1>
+
+      <form>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="input-rew-file" class="form-label text-white">
+              REW Filter (.txt)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              id="input-rew-file"
+              accept=".txt"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col">
+            <label for="input-zapco-file" class="form-label text-white">
+              Zapco EQ File (.xps)
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              id="input-zapco-file"
+              accept=".xps"
+              required
+            />
+          </div>
+        </div>
+
+        <hr class="text-white" />
+
+        <div class="row mb-4">
+          <div class="col">
+            <label for="input-channel" class="form-label text-white">
+              Channel to Apply Filter
+            </label>
+
+            <select class="form-select" id="channel-selection" required>
+              <option selected>Choose...</option>
+              <option value="1">1 - Front Left TW</option>
+              <option value="2">2 - Front Right TW</option>
+              <option value="3">3 - Front Left WF</option>
+              <option value="4">4 - Front Right WF</option>
+              <option value="5">5 - Rear Left</option>
+              <option value="6">6 - Rear Right</option>
+              <option value="7">7 - Left Sub</option>
+              <option value="8">8 - Right Sub</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              GENERATE EQ FILE
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
