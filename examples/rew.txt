@@ -1,0 +1,26 @@
+Notes:
+Generic
+Number Enabled Control Type Frequency(Hz) Gain(dB) Q Bandwidth(Hz) TargetT60(ms) FilterT60(ms) 
+1 True Auto PK 546.0 -18.10 4.318 126.4 
+2 True Auto PK 715.0 -7.90 3.226 221.6 
+3 True Auto PK 993.0 -9.30 3.312 299.8 
+4 True Auto None 
+5 True Auto None 
+6 True Auto None 
+7 True Auto None 
+8 True Auto None 
+9 True Auto None 
+10 True Auto None 
+11 True Auto None 
+12 True Auto None 
+13 True Auto None 
+14 True Auto None 
+15 True Auto None 
+16 True Auto None 
+17 True Auto None 
+18 True Auto None 
+19 True Auto None 
+20 True Auto None 
+Crossover_filters
+1 True Manual None 
+2 True Manual None 
