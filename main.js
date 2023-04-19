@@ -1,4 +1,10 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  dialog,
+  Notification,
+} = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -66,7 +72,7 @@ ipcMain.on("submit-form", (event, rewFilter, zapcoEqFile, channel) => {
   dialog
     .showSaveDialog({
       title: "Select the File Path to save",
-      defaultPath: path.join(__dirname, "/out.xps"),
+      defaultPath: path.join(__dirname, "./out.xps"),
       buttonLabel: "Save",
       // Restricting the user to only Text Files.
       filters: [
@@ -88,6 +94,11 @@ ipcMain.on("submit-form", (event, rewFilter, zapcoEqFile, channel) => {
           function (err) {
             if (err) throw err;
             console.log("Saved!");
+
+            new Notification({
+              title: "REW AUTOEQ TO ZAPCO",
+              body: "Successfully generated Zapco Eq File!",
+            }).show();
           }
         );
       }
