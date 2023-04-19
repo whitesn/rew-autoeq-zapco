@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -52,18 +52,49 @@ ipcMain.on("submit-form", (event, rewFilter, zapcoEqFile, channel) => {
   // Channle<1-8>.stID.id<1-15>
   // [<id>, <freq>, <q>, <gain>]
   for (let i = 0; i < parsedRewFilter.length; i++) {
-    let id = i+1;
+    let id = i + 1;
 
-    parsedZapcoEq["Channle" + channel]["stID"]["id" + id] = 
-      [
-        id, 
-        parsedRewFilter[i]['freq'],
-        parsedRewFilter[i]['q'],
-        parsedRewFilter[i]['gain']
-      ];
+    parsedZapcoEq["Channle" + channel]["stID"]["id" + id] = [
+      id,
+      Number(parsedRewFilter[i]["freq"]),
+      Number(parsedRewFilter[i]["q"]),
+      Number(parsedRewFilter[i]["gain"]),
+    ];
   }
 
   // Save / Download??
+  dialog
+    .showSaveDialog({
+      title: "Select the File Path to save",
+      defaultPath: path.join(__dirname, "/out.xps"),
+      buttonLabel: "Save",
+      // Restricting the user to only Text Files.
+      filters: [
+        {
+          name: "Zapco EQ File",
+          extensions: ["xps"],
+        },
+      ],
+      properties: [],
+    })
+    .then((file) => {
+      console.log(file.canceled);
+      if (!file.canceled) {
+        console.log(file.filePath.toString());
+
+        fs.writeFile(
+          file.filePath.toString(),
+          JSON.stringify(parsedZapcoEq),
+          function (err) {
+            if (err) throw err;
+            console.log("Saved!");
+          }
+        );
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 /*
