@@ -3,29 +3,36 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: "@electron-forge/maker-squirrel",
       config: {},
     },
     {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      name: "@electron-forge/maker-zip",
+      platforms: ["darwin", "win32"],
     },
     {
-      name: '@electron-forge/maker-deb',
+      name: "@electron-forge/maker-dmg",
+      config: {
+        background: "./assets/dmg-background.png",
+        format: "ULFO",
+      },
+    },
+    {
+      name: "@electron-forge/maker-deb",
       config: {},
     },
     {
-      name: '@electron-forge/maker-rpm',
+      name: "@electron-forge/maker-rpm",
       config: {},
     },
   ],
   publishers: [
     {
-      name: '@electron-forge/publisher-github',
+      name: "@electron-forge/publisher-github",
       config: {
         repository: {
-          owner: 'whitesn',
-          name: 'rew-autoeq-zapco',
+          owner: "whitesn",
+          name: "rew-autoeq-zapco",
         },
         prerelease: false,
         draft: true,
