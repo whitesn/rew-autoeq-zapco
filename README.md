@@ -14,6 +14,7 @@ Apply REW generated Auto EQ to Zapco ST-X existing EQ (.xps) file, and generate 
 # Notes
 
 - Only for ST-X DSP III Zapco (v1.02), tested with the ST-4X DSP program
+- Only for simple PK type filters, maybe more to come if I figure out things
 - Max gain are -20db <= gain <= +10db
 - Frequency ranges are 20 <= freq <= 20khz
 - Q ranges are 0.5 <= Q <= 20
