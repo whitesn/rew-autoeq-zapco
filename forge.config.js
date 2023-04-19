@@ -19,4 +19,17 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'whitesn',
+          name: 'rew-autoeq-zapco',
+        },
+        prerelease: false,
+        draft: true,
+      },
+    },
+  ],
 };
