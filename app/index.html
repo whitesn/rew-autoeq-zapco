@@ -18,7 +18,7 @@
     <div class="container">
       <h1 class="text-white text-center mt-4 mb-4">REW AutoEQ to Zapco</h1>
 
-      <form>
+      <form id="zapcoAutoEqForm">
         <div class="row mb-4">
           <div class="col">
             <label for="input-rew-file" class="form-label text-white">
@@ -58,7 +58,7 @@
             </label>
 
             <select class="form-select" id="channel-selection" required>
-              <option selected>Choose...</option>
+              <option value="">Choose...</option>
               <option value="1">1 - Front Left TW</option>
               <option value="2">2 - Front Right TW</option>
               <option value="3">3 - Front Left WF</option>
@@ -81,4 +81,5 @@
       </form>
     </div>
   </body>
+  <script src="./renderer.js"></script>
 </html>

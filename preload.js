@@ -1,10 +1,6 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const replaceText = (selector, text) => {
-    const element = document.getElementById(selector);
-    if (element) element.innerText = text;
-  };
+const { contextBridge, ipcRenderer } = require("electron");
 
-  for (const dependency of ["chrome", "node", "electron"]) {
-    replaceText(`${dependency}-version`, process.versions[dependency]);
-  }
+contextBridge.exposeInMainWorld("electronAPI", {
+  submitForm: (rewFilter, zapcoEqFile, channel) =>
+    ipcRenderer.send("submit-form", rewFilter, zapcoEqFile, channel),
 });
