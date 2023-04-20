@@ -7,6 +7,7 @@ const {
 } = require("electron");
 const path = require("path");
 const fs = require("fs");
+const MAX_EQ_BAND_COUNT = 15;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -167,6 +168,10 @@ function parseRewFilter(rewFilterContent) {
           q: q,
         });
       }
+    }
+    
+    if (eqFilters.length >= MAX_EQ_BAND_COUNT) {
+      break;
     }
   }
 
